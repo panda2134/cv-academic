@@ -21,8 +21,12 @@ jobs:
           biber-version: 'latest'
       - name: Run Tectonic + Biber
         run: tectonic main.tex
-      - name: Upload pdf
+      - name: Upload pdf to artifact
         uses: actions/upload-artifact@v3
         with:
           name: main
           path: main.pdf
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: main.pdf
